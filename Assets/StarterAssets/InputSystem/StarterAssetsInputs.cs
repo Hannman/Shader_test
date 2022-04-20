@@ -1,7 +1,6 @@
 using UnityEngine;
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
-#endif
+
 
 namespace StarterAssets
 {
@@ -64,6 +63,21 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
+
+#if !UNITY_IOS || !UNITY_ANDROID
+
+		private void OnApplicationFocus(bool hasFocus)
+		{
+			SetCursorState(cursorLocked);
+		}
+
+		private void SetCursorState(bool newState)
+		{
+			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+		}
+
+#endif
+
 	}
 	
 }
