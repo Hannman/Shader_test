@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,11 +13,10 @@ public class WOW_InputController : MonoBehaviour
     [Header("Movement Settings")]
     public bool analogMovement;
 
-#if !UNITY_IOS || !UNITY_ANDROID
     [Header("Mouse Cursor Settings")]
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
-#endif
+
 
     public void OnMove(InputValue value)
     {
@@ -36,10 +36,29 @@ public class WOW_InputController : MonoBehaviour
         JumpInput(value.isPressed);
     }
 
-    public void OnSprint(InputValue value)
+    public void OnWalk(InputValue value)
     {
-        SprintInput(value.isPressed);
+        WalkInput(value.isPressed);
     }
+
+    public void OnLookAndRotate(InputValue value)
+    {
+        LookAndRotateInput(value.Get<Vector2>());
+
+    }
+
+    public void OnCursorLock()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void OnCursorUnlock()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+
+
 
     public void MoveInput(Vector2 newMoveDirection)
     {
@@ -51,28 +70,21 @@ public class WOW_InputController : MonoBehaviour
         look = newLookDirection;
     }
 
+    public void LookAndRotateInput(Vector2 newLookRotateDirection)
+    {
+        print($"LookAndRotate {newLookRotateDirection}");
+    }
+
+
     public void JumpInput(bool newJumpState)
     {
         jump = newJumpState;
     }
 
-    public void SprintInput(bool newSprintState)
+    public void WalkInput(bool newSprintState)
     {
-        sprint = newSprintState;
+        sprint = !newSprintState;
     }
-
-#if !UNITY_IOS || !UNITY_ANDROID
-
-    private void OnApplicationFocus(bool hasFocus)
-    {
-        SetCursorState(cursorLocked);
-    }
-
-    private void SetCursorState(bool newState)
-    {
-        Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
-    }
-#endif
 
 }
 

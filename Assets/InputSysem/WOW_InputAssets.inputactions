@@ -24,6 +24,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "LookAndMove",
+                    "type": "Value",
+                    "id": "bcc9439e-f6ac-40e6-b6ad-43bcc1c3e1f6",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "8c4abdf8-4099-493a-aa1a-129acec7c3df",
@@ -33,10 +42,46 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Sprint",
+                    "name": "Walk",
                     "type": "PassThrough",
                     "id": "980e881e-182c-404c-8cbf-3d09fdb48fef",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Selection",
+                    "type": "Button",
+                    "id": "aab2c8d1-97aa-47c2-97e6-f75db29dc997",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LookAndRotate",
+                    "type": "Value",
+                    "id": "04ace170-3982-4383-bacb-4a838a033770",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "CursorLock",
+                    "type": "Button",
+                    "id": "f26399d0-9ab4-4b95-8b4f-0e2a3667079e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CursorUnlock",
+                    "type": "Button",
+                    "id": "b5ebae38-2976-42ea-af6b-8c40c59faf3f",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -178,7 +223,7 @@
                 {
                     "name": "modifier",
                     "id": "05f2fdf0-1b44-483f-912f-ddaa90382959",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
@@ -226,7 +271,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Sprint",
+                    "action": "Walk",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -237,9 +282,141 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Sprint",
+                    "action": "Walk",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "714aa86e-0bea-4f50-9bba-b790549d9e65",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Selection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "74601827-77b6-46de-97f8-b7f25d363525",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LookAndRotate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "f43e98cf-cd6f-42b2-af2b-b8eadc9da611",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "LookAndRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Binding",
+                    "id": "99b3d650-47b4-4f1a-868b-8e456b54a1e7",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "LookAndRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "8b6377d8-bc83-4385-88c1-cd86592faefd",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "CursorLock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "95afead4-c282-45fe-b79f-c8648c93b553",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "CursorLock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "261237c8-f9e0-4fdb-a675-d4e77c27f6ea",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "CursorUnlock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6909141e-fb46-4bfc-a01b-55d734035ff9",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "CursorUnlock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "LookAndMove",
+                    "id": "b2f79dfb-e54a-4d2f-a92a-92f5d8e4a71e",
+                    "path": "TwoModifiers",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "LookAndMove",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier 1",
+                    "id": "7e4681c4-f8dd-4849-95ae-d53ea89af461",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "LookAndMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "modifier2",
+                    "id": "be65ab5a-ba73-4072-a26a-508fcc718920",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "LookAndMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "923ff793-4c64-4d84-b506-1a1fb7454c18",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "InvertVector2(invertX=false),ScaleVector2(x=15,y=15)",
+                    "groups": "KeyboardMouse",
+                    "action": "LookAndMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
