@@ -1,5 +1,4 @@
-﻿using StarterAssets;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 
@@ -82,7 +81,7 @@ public class HGM_ThirdPersonController : MonoBehaviour
 
     private Animator _animator;
     private CharacterController _controller;
-    private StarterAssetsInputs _input;
+    private HGM_InputController _input;
     private GameObject _mainCamera;
 
     private const float _threshold = 0.01f;
@@ -102,7 +101,7 @@ public class HGM_ThirdPersonController : MonoBehaviour
     {
         _hasAnimator = TryGetComponent(out _animator);
         _controller = GetComponent<CharacterController>();
-        _input = GetComponent<StarterAssetsInputs>();
+        _input = GetComponent<HGM_InputController>();
 
         AssignAnimationIDs();
 
