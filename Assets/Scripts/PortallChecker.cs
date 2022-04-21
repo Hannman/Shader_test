@@ -4,7 +4,6 @@ public class PortallChecker : MonoBehaviour
 {
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Debug.Log(hit.gameObject.tag);
         if (hit.gameObject.tag == "Portal")
         {
             transform.position = new Vector3(transform.position.x, 12f, transform.position.z);
