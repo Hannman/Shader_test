@@ -47,18 +47,6 @@ public class WOW_InputController : MonoBehaviour
 
     }
 
-    public void OnCursorLock()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    public void OnCursorUnlock()
-    {
-        Cursor.lockState = CursorLockMode.None;
-    }
-
-
-
 
     public void MoveInput(Vector2 newMoveDirection)
     {
@@ -84,6 +72,16 @@ public class WOW_InputController : MonoBehaviour
     public void WalkInput(bool newSprintState)
     {
         sprint = !newSprintState;
+    }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        SetCursorState(cursorLocked);
+    }
+
+    private void SetCursorState(bool newState)
+    {
+        Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
     }
 
 }
