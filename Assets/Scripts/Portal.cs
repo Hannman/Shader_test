@@ -6,8 +6,13 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-            position = other.gameObject.transform.position;
-            position.y = 11.5f;
-            other.gameObject.transform.position = position;
+
+        print(other.gameObject.tag);
+        if (other.gameObject.tag == "Player")
+        {
+            //position = other.gameObject.transform.position;
+            //position.y = 11.5f;
+            //other.gameObject.transform.position = position;
+        }
     }
 }
